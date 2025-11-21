@@ -1,0 +1,437 @@
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #070b16;
+    color: #f5f7fb;
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 3rem clamp(1rem, 5vw, 4rem);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero__content {
+    z-index: 1;
+    align-self: center;
+}
+
+.hero__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    color: #6ee7ff;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+    color: #d2d7e8;
+    margin-bottom: 1.5rem;
+}
+
+.hero__media {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+}
+
+.hero__glow {
+    position: absolute;
+    inset: 15% auto auto 40%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(24,154,255,0.35), transparent 60%);
+    filter: blur(20px);
+    z-index: 0;
+}
+
+.btn {
+    border: none;
+    border-radius: 999px;
+    padding: 0.85rem 2.4rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn.primary {
+    background: linear-gradient(135deg, #ff7a18, #ffcd1e);
+    color: #0b0f1c;
+    box-shadow: 0 10px 30px rgba(255, 122, 24, 0.4);
+}
+
+.btn.secondary {
+    background: transparent;
+    color:black;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: #ff9d2f;
+}
+
+.btn:not(:disabled):hover {
+    transform: translateY(-2px);
+}
+
+main {
+    padding: 2rem clamp(1rem, 5vw, 5rem) 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.app{
+    color: black;
+}
+
+.apps{
+    color: black;
+    display: inline;
+    background-color: #ff7a18;
+}
+
+.panel {
+    background: rgba(11, 17, 34, 0.9);
+    border: 1px solid rgba(110, 231, 255, 0.1);
+    border-radius: 1.5rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.panel.hidden {
+    display: none;
+}
+
+.panel__header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.35rem;
+}
+
+.panel__header p {
+    color: #a7b6d8;
+}
+
+.panel__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.booking-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem 1.5rem;
+}
+
+.booking-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    font-weight: 600;
+}
+
+.booking-form select,
+.booking-form input {
+    border-radius: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.85rem;
+    background: rgba(255, 255, 255, 0.04);
+    color: #f5f7fb;
+}
+
+.booking-form input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.note {
+    color: #a7b6d8;
+    font-size: 0.95rem;
+}
+
+.note.success {
+    color: #75ffb4;
+    min-height: 1.5rem;
+}
+
+.bus-card {
+    background: rgba(17, 25, 46, 0.8);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(110, 231, 255, 0.08);
+}
+
+.bus-card__legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    color: #a7b6d8;
+    font-size: 0.9rem;
+}
+
+.seat-swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-right: 0.4rem;
+}
+
+.seat-swatch.available {
+    background: rgba(128, 222, 255, 0.7);
+}
+
+.seat-swatch.selected {
+    background: #ffb347;
+}
+
+.bus-shell {
+    background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent);
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.bus-front {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.driver-seat,
+.steps {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    text-align: center;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+}
+
+.seat-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(40px, 1fr));
+    gap: 0.6rem;
+    justify-items: center;
+}
+
+.seat-grid .spacer {
+    visibility: hidden;
+}
+
+.seat {
+    width: 100%;
+    padding: 0.65rem 0;
+    border-radius: 0.75rem;
+    background: rgba(128, 222, 255, 0.2);
+    border: 1px solid rgba(128, 222, 255, 0.8);
+    text-align: center;
+    font-weight: 600;
+    color: #f5f7fb;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.seat.selected {
+    background: #ffb347;
+    border-color: #ff9d2f;
+    color: #0b0f1c;
+}
+
+.seat.unavailable {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.summary-label {
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    font-size: 0.85rem;
+    color: #a7b6d8;
+}
+
+.summary-value {
+    font-size: 1.25rem;
+    margin-top: 0.35rem;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+}
+
+.detail-grid > div {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 1rem;
+    padding: 1.1rem;
+}
+
+.payment-card {
+    background: rgba(20, 30, 56, 0.9);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(110, 231, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.payment-amount {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.ticket-preview {
+    margin-top: 1.5rem;
+    background: #fff;
+    color: #111;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    line-height: 1.4;
+}
+
+.ticket-preview h3,
+.ticket-preview h4 {
+    color: #111;
+    margin-bottom: 0.4rem;
+}
+
+.ticket-preview section {
+    margin-bottom: 1rem;
+}
+
+.ticket-preview footer {
+    font-weight: 600;
+}
+
+@media (max-width: 640px) {
+    .panel__footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .bus-front {
+        grid-template-columns: 1fr;
+    }
+
+    .seat-grid {
+        grid-template-columns: repeat(3, minmax(40px, 1fr));
+    }
+}
+
+@media print {
+    * {
+        background: #fff !important;
+        color: #000 !important;
+        box-shadow: none !important;
+    }
+
+    body {
+        background: #fff;
+        padding: 0;
+        margin: 0;
+    }
+
+    .hero,
+    .panel:not(#paymentPanel),
+    .payment-card,
+    .btn {
+        display: none !important;
+    }
+
+    #paymentPanel {
+        display: block !important;
+        background: transparent;
+        border: none;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .ticket-preview {
+        margin: 0;
+        padding: 2rem;
+        background: #fff;
+        color: #000;
+        border: 2px solid #000;
+        border-radius: 0;
+        page-break-inside: avoid;
+    }
+
+    .ticket-preview h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #000;
+        padding-bottom: 0.5rem;
+    }
+
+    .ticket-preview h4 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        border-bottom: 1px solid #000;
+        padding-bottom: 0.25rem;
+    }
+
+    .ticket-preview p {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+    }
+
+    .ticket-preview section {
+        margin-bottom: 1.5rem;
+    }
+
+    .ticket-preview footer {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 2px solid #000;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    @page {
+        size: A4;
+        margin: 1.5cm;
+    }
+}

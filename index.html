@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amman Bus Service</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header class="hero" id="hero">
+        <div class="hero__content">
+            <p class="hero__eyebrow">Volvo 9600</p>
+            <h1>Welcome to Amman Bus Service</h1>
+            <p class="hero__subtitle">Luxury Volvo coach experience between Coimbatore and Pudukkottai.</p>
+            <button id="ctaGo" class="btn primary">Go</button>
+        </div>
+        <div class="hero__media">
+            <img src="AMMAN TRAVELS_page-0001.jpg">
+        </div>
+        <div class="hero__glow"></div>
+    </header>
+
+    <main>
+        <section id="bookingPanel" class="panel hidden">
+            <div class="panel__header">
+                <h2>Book Your Volvo Journey</h2>
+                <p>Choose your route and travel date to begin.</p>
+            </div>
+            <form id="bookingForm" class="booking-form">
+                <label>
+                    From
+                    <select id="fromSelect" required>
+                        <option value="" class="apps">Select origin</option>
+                        <option value="Coimbatore" class="app">Coimbatore</option>
+                        <option value="Pudukkottai" class="app">Pudukkottai</option>
+                    </select>
+                </label>
+                <label>
+                    To
+                    <select id="toSelect" required>
+                        <option value="" class="apps">Select destination</option>
+                        <option value="Pudukkottai" class="app">Pudukkottai</option>
+                        <option value="Coimbatore" class="app">Coimbatore</option>
+                    </select>
+                </label>
+                <label>
+                    Journey Date
+                    <input type="date" id="journeyDate" required>
+                </label>
+                <div class="form-actions">
+                    <button type="submit" class="btn secondary" id="searchTrips">Search</button>
+                </div>
+            </form>
+            <p id="bookingMessage" class="note"></p>
+        </section>
+
+        <section id="seatPanel" class="panel hidden">
+            <div class="panel__header">
+                <h2>Select Seats – Volvo 9600</h2>
+                <p>Tap to choose your preferred seats. Total seats: 54</p>
+            </div>
+            <div class="bus-card">
+                <div class="bus-card__legend">
+                    <span><span class="seat-swatch available"></span>Available</span>
+                    <span><span class="seat-swatch selected"></span>Selected</span>
+                </div>
+                <div class="bus-shell">
+                    <div class="bus-front">
+                        <div class="driver-seat">Driver</div>
+                        <div class="steps">Steps</div>
+                    </div>
+                    <div id="seatGrid" class="seat-grid" aria-live="polite"></div>
+                </div>
+            </div>
+            <div class="panel__footer">
+                <div>
+                    <p class="summary-label">Selected Seats</p>
+                    <p id="seatSummary" class="summary-value">None</p>
+                </div>
+                <button id="seatContinue" class="btn primary" disabled>Continue</button>
+            </div>
+        </section>
+
+        <section id="pickupPanel" class="panel hidden">
+            <div class="panel__header">
+                <h2>Pick-Up & Drop-Off</h2>
+                <p>Review boarding and drop timings for your route.</p>
+            </div>
+            <div class="detail-grid">
+                <div>
+                    <p class="summary-label">Boarding Point</p>
+                    <p id="boardingPoint" class="summary-value">--</p>
+                    <p id="boardingTime" class="note"></p>
+                </div>
+                <div>
+                    <p class="summary-label">Drop-Off Point</p>
+                    <p id="dropPoint" class="summary-value">--</p>
+                    <p id="dropTime" class="note"></p>
+                </div>
+                <div>
+                    <p class="summary-label">Fare</p>
+                    <p id="fareSummary" class="summary-value">--</p>
+                    <p class="note">₹600 per seat in both directions.</p>
+                </div>
+            </div>
+            <div class="panel__footer">
+                <button id="pickupNext" class="btn primary" disabled>Next</button>
+            </div>
+        </section>
+
+        <section id="passengerPanel" class="panel hidden">
+            <div class="panel__header">
+                <h2>Passenger Details</h2>
+                <p>Enter passenger contact information.</p>
+            </div>
+            <form id="passengerForm" class="booking-form">
+                <label>
+                    Name
+                    <input type="text" id="passengerName" required>
+                </label>
+                <label>
+                    Contact
+                    <input type="tel" id="passengerPhone" required>
+                </label>
+                <label>
+                    Email ID
+                    <input type="email" id="passengerEmail" required>
+                </label>
+                <div class="form-actions">
+                    <button type="submit" class="btn secondary">Next</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="paymentPanel" class="panel hidden">
+            <div class="panel__header">
+                <h2>Payment & Ticket</h2>
+                <p>Confirm fare and generate your Amman Travels ticket.</p>
+            </div>
+            <div class="payment-card">
+                <p class="summary-label">Payable Amount</p>
+                <p id="paymentAmount" class="payment-amount">₹0</p>
+                <button id="payNow" class="btn primary">Pay</button>
+                <p id="paymentStatus" class="note success"></p>
+                <button id="printTicket" class="btn secondary" disabled>Print Ticket</button>
+            </div>
+            <article id="ticketPreview" class="ticket-preview">
+                <header>
+                    <h3>Welcome to Amman Bus Service</h3>
+                </header>
+                <section>
+                    <h4>Owner Details</h4>
+                    <p>Owner: Saran R</p>
+                    <p>Contact: 9597389141</p>
+                    <p>Email: info@Ammam.com</p>
+                    <p>Bus Model: Volvo 9600</p>
+                </section>
+                <section>
+                    <h4>Passenger Detail</h4>
+                    <p id="ticketId">Ticket ID: 12Volvo131</p>
+                    <p id="ticketPassenger">Passenger: --</p>
+                    <p id="ticketContact">Contact: --</p>
+                    <p id="ticketEmail">Email: --</p>
+                    <p id="ticketDate"> Journey Date: --</p>
+                    <p id="ticketSeats">Your Seat: --</p>
+                    <p id="ticketRoute">Route: --</p>
+                    <p id="ticketTiming">Boarding time / Droping time: --</p>
+                    <p id="ticketPoints">Boarding Point / Drop Point: --</p>
+                    <p id="ticketFare">Amount Paid: ₹0</p>
+                </section>
+                <footer>
+                    <h6>"Wishing you a pleasant and safe journey. Greetings from the Travels team!"</h6>
+                    <p>"Thank You! Visit Again!..."</p>
+                </footer>
+            </article>
+        </section>
+    </main>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
